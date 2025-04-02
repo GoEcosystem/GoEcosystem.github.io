@@ -1,0 +1,26 @@
+# API Navigation Template
+# This file should be copied to your repository's docs/_data directory as api_navigation.yml
+# Customize the sections and items to match your API structure
+
+- title: Introduction
+  url: "#introduction"
+- title: Authentication
+  url: "#authentication"
+- title: Endpoints
+  url: "#endpoints"
+  subitems:
+    - title: Resource 1
+      url: "#resource-1"
+    - title: Resource 2
+      url: "#resource-2"
+    - title: Resource 3
+      url: "#resource-3"
+- title: Error Handling
+  url: "#error-handling"
+  subitems:
+    - title: Common Errors
+      url: "#common-error-codes"
+- title: Rate Limiting
+  url: "#rate-limiting"
+- title: Examples
+  url: "#examples"
