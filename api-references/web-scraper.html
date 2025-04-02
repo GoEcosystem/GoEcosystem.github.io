@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Scraper API Reference | GoEcosystem Documentation</title>
+  <meta name="description" content="API documentation for the Go Web Scraper">
+  <style>
+    /* Base Variables */
+    :root {
+      /* Colors */
+      --primary-color: #00ADD8;       /* Go blue */
+      --primary-light: #5DC9E2;
+      --primary-dark: #0092B8;
+      --secondary-color: #FFDD57;     /* Go yellow */
+      --dark-color: #0D1117;
+      --light-color: #F8F9FA;
+      --gray-100: #F8F9FA;
+      --gray-200: #E9ECEF;
+      --gray-300: #DEE2E6;
+      --gray-400: #CED4DA;
+      --gray-500: #ADB5BD;
+      --gray-600: #6C757D;
+      --gray-700: #495057;
+      --gray-800: #343A40;
+      --gray-900: #212529;
+      
+      /* Typography */
+      --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      
+      /* Spacing */
+      --spacing-unit: 0.25rem;
+      --container-max-width: 1140px;
+      --container-padding: 1rem;
+    }
+
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family-sans);
+      line-height: 1.6;
+      color: var(--gray-800);
+      background-color: var(--light-color);
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--gray-900);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    ul, ol {
+      margin: 0 0 1.5rem 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    code {
+      font-family: var(--font-family-mono);
+      background-color: var(--gray-100);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      color: var(--gray-800);
+    }
+
+    pre {
+      background-color: var(--dark-color);
+      color: var(--gray-200);
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--primary-color);
+      padding-left: 1rem;
+      color: var(--gray-700);
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--gray-200);
+      margin: 2rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid var(--gray-300);
+    }
+
+    th {
+      background-color: var(--gray-100);
+      font-weight: 600;
+    }
+
+    /* Layout */
+    .container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    /* Header */
+    .site-header {
+      background-color: var(--dark-color);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .logo-text {
+      margin-left: 0.5rem;
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+    }
+
+    .site-nav li {
+      margin: 0 0 0 1.5rem;
+    }
+
+    .site-nav a {
+      color: var(--gray-300);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .site-nav a:hover, .site-nav a.active {
+      color: white;
+    }
+
+    /* Content */
+    .site-content {
+      padding: 3rem 0;
+      min-height: calc(100vh - 350px); /* Ensure footer stays at bottom */
+    }
+
+    .page-header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--gray-200);
+      padding-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .page-description {
+      color: var(--gray-600);
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--gray-900);
+      color: var(--gray-400);
+      padding: 3rem 0;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-col h3 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-col ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col a {
+      color: var(--gray-400);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gray-800);
+      font-size: 0.9rem;
+    }
+
+    /* API Documentation specific styling */
+    .api-documentation {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .api-documentation h1 {
+      color: #00ADD8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .api-documentation h2 {
+      color: #0D1117;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #E9ECEF;
+    }
+    
+    .api-documentation h3 {
+      color: #0092B8;
+      margin-top: 1.5rem;
+    }
+    
+    .api-documentation h4 {
+      color: #333;
+      margin-top: 1.2rem;
+    }
+    
+    .api-documentation table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 2rem 0;
+    }
+    
+    .api-documentation th {
+      background-color: #F0F5F9;
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid #E9ECEF;
+    }
+    
+    .api-documentation td {
+      padding: 0.75rem;
+      border: 1px solid #E9ECEF;
+    }
+    
+    .api-documentation code {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      background-color: #F0F5F9;
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+    
+    .api-documentation pre {
+      background-color: #1F2937;
+      color: #E5E7EB;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .api-documentation pre code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+    
+    .api-documentation ul {
+      margin-bottom: 1.5rem;
+    }
+    
+    .api-documentation li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Endpoint styling */
+    .endpoint-method {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .endpoint-method.get {
+      background-color: #D1ECF1;
+      color: #0C5460;
+    }
+    
+    .endpoint-method.post {
+      background-color: #D4EDDA;
+      color: #155724;
+    }
+    
+    .endpoint-method.put {
+      background-color: #FFF3CD;
+      color: #856404;
+    }
+    
+    .endpoint-method.delete {
+      background-color: #F8D7DA;
+      color: #721C24;
+    }
+    
+    .endpoint-url {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      padding: 0.25rem 0.5rem;
+      background-color: #F0F5F9;
+      border-radius: 4px;
+    }
+    
+    /* Response status colors */
+    .status-200 {
+      color: #155724;
+    }
+    
+    .status-400, .status-404 {
+      color: #856404;
+    }
+    
+    .status-500 {
+      color: #721C24;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .site-header .container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .site-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .site-nav li {
+        margin: 0.5rem;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <span class="logo-text">GoEcosystem</span>
+      </a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/repositories/">Repositories</a></li>
+          <li><a href="/documentation/">Documentation</a></li>
+          <li><a href="/api-references/" class="active">API References</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="https://github.com/GoEcosystem">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-content">
+    <div class="container">
+      <div class="page-header">
+        <h1>Web Scraper API Reference</h1>
+        <p class="page-description">API documentation for the Go Web Scraper</p>
+      </div>
+      
+      <div class="api-documentation">
+        <p>The Go Web Scraper provides a RESTful API for accessing and manipulating scraped data programmatically. This documentation covers all the available endpoints and how to use them.</p>
+
+        <h2>Base URL</h2>
+
+        <p>When running locally:</p>
+        <pre><code>http://localhost:8080/api</code></pre>
+
+        <h2>Authentication</h2>
+
+        <p>Currently, the API doesn't require authentication as it's designed for local use.</p>
+
+        <h2>Endpoints</h2>
+
+        <h3>Articles</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/articles</code></td>
+              <td>List all articles with pagination</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/articles/:id</code></td>
+              <td>Get a specific article by ID</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/articles/search</code></td>
+              <td>Search articles by keywords</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>List Articles</h4>
+
+        <pre><code>GET /api/articles?page=1&limit=20</code></pre>
+
+        <p>Query Parameters:</p>
+        <ul>
+          <li><code>page</code>: Page number (default: 1)</li>
+          <li><code>limit</code>: Number of items per page (default: 20)</li>
+          <li><code>sort</code>: Sort field (options: 'date', 'title', 'score')</li>
+          <li><code>order</code>: Sort order (options: 'asc', 'desc')</li>
+        </ul>
+
+        <p>Response:</p>
+        <pre><code>{
+  "data": [
+    {
+      "id": 1,
+      "title": "Introducing Go 2.0",
+      "url": "https://example.com/go-2-release",
+      "score": 342,
+      "comments": 127,
+      "date": "2025-03-30T15:42:31Z",
+      "author": "gopher"
+    },
+    ...
+  ],
+  "pagination": {
+    "total": 256,
+    "page": 1,
+    "limit": 20,
+    "totalPages": 13
+  }
+}</code></pre>
+
+        <h4>Get Article by ID</h4>
+
+        <pre><code>GET /api/articles/42</code></pre>
+
+        <p>Response:</p>
+        <pre><code>{
+  "id": 42,
+  "title": "Advanced Concurrency Patterns in Go",
+  "url": "https://example.com/concurrency-patterns",
+  "score": 512,
+  "comments": 89,
+  "date": "2025-03-25T09:17:22Z",
+  "author": "concurrency_fan",
+  "content": "Full article content here...",
+  "tags": ["go", "concurrency", "programming"]
+}</code></pre>
+
+        <h4>Search Articles</h4>
+
+        <pre><code>GET /api/articles/search?q=golang+concurrency</code></pre>
+
+        <p>Query Parameters:</p>
+        <ul>
+          <li><code>q</code>: Search query</li>
+          <li><code>page</code>: Page number (default: 1)</li>
+          <li><code>limit</code>: Number of items per page (default: 20)</li>
+        </ul>
+
+        <p>Response: Same format as List Articles.</p>
+
+        <h3>Products</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/products</code></td>
+              <td>List all products with pagination</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/products/:id</code></td>
+              <td>Get a specific product by ID</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/products/search</code></td>
+              <td>Search products by keywords</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/products/category/:category</code></td>
+              <td>List products by category</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>List Products</h4>
+
+        <pre><code>GET /api/products?page=1&limit=20</code></pre>
+
+        <p>Query Parameters:</p>
+        <ul>
+          <li><code>page</code>: Page number (default: 1)</li>
+          <li><code>limit</code>: Number of items per page (default: 20)</li>
+          <li><code>sort</code>: Sort field (options: 'price', 'title', 'rating')</li>
+          <li><code>order</code>: Sort order (options: 'asc', 'desc')</li>
+        </ul>
+
+        <p>Response:</p>
+        <pre><code>{
+  "data": [
+    {
+      "id": 1,
+      "title": "Programming in Go",
+      "author": "Mark Author",
+      "price": 39.99,
+      "imageUrl": "https://example.com/book-cover.jpg",
+      "rating": 4.7,
+      "category": "programming"
+    },
+    ...
+  ],
+  "pagination": {
+    "total": 178,
+    "page": 1,
+    "limit": 20,
+    "totalPages": 9
+  }
+}</code></pre>
+
+        <p>Similar patterns apply for other product endpoints.</p>
+
+        <h3>Export</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/export/articles</code></td>
+              <td>Export all articles as JSON or CSV</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/api/export/products</code></td>
+              <td>Export all products as JSON or CSV</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Export Articles</h4>
+
+        <pre><code>GET /api/export/articles?format=json</code></pre>
+
+        <p>Query Parameters:</p>
+        <ul>
+          <li><code>format</code>: Export format (options: 'json', 'csv', default: 'json')</li>
+        </ul>
+
+        <p>Response: File download</p>
+
+        <h2>Status Codes</h2>
+
+        <p>The API uses standard HTTP status codes:</p>
+
+        <ul>
+          <li><code>200 OK</code>: Request successful</li>
+          <li><code>400 Bad Request</code>: Invalid request parameters</li>
+          <li><code>404 Not Found</code>: Resource not found</li>
+          <li><code>500 Internal Server Error</code>: Server error</li>
+        </ul>
+
+        <h2>Rate Limiting</h2>
+
+        <p>To prevent abuse, the API implements rate limiting of 100 requests per minute per IP address. If you exceed this limit, you'll receive a <code>429 Too Many Requests</code> response.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>GoEcosystem</h3>
+          <p>A comprehensive ecosystem of Go applications, libraries, and tools.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="/documentation/">Documentation</a></li>
+            <li><a href="/api-references/">API References</a></li>
+            <li><a href="/guides/">Guides</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="https://github.com/GoEcosystem">GitHub</a></li>
+            <li><a href="https://go.dev">Go Website</a></li>
+            <li><a href="https://pkg.go.dev">Go Packages</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 GoEcosystem. All repositories licensed under MIT License.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

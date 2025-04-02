@@ -1,0 +1,60 @@
+# Site settings
+title: GoEcosystem Documentation
+description: Comprehensive documentation for the GoEcosystem organization
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://goecosystem.github.io" # the base hostname & protocol for your site
+repository: GoEcosystem/GoEcosystem.github.io
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Jekyll settings
+permalink: pretty
+exclude:
+  - .git/
+  - .github/
+  - node_modules/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+
+# Theme and plugins
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-seo-tag
+  - jekyll-relative-links
+  - jekyll-github-metadata
+
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "api"
+    values:
+      layout: "api"
+  - scope:
+      path: "guides"
+    values:
+      layout: "guide"
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Repositories
+    url: /repositories/
+  - title: Documentation
+    url: /documentation/
+  - title: API References
+    url: /api-references/
+  - title: Guides
+    url: /guides/
+  - title: GitHub
+    url: https://github.com/GoEcosystem
