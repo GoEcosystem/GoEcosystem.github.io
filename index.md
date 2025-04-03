@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GoEcosystem Documentation Hub
+title: GoEcosystem
 description: A comprehensive ecosystem of Go applications, libraries, and tools
 ---
 
@@ -10,106 +10,120 @@ description: A comprehensive ecosystem of Go applications, libraries, and tools
     <p class="hero-tagline">A comprehensive ecosystem of Go applications, libraries, and tools</p>
     <div class="hero-buttons">
       <a href="https://github.com/GoEcosystem" class="btn btn-primary btn-lg">View on GitHub</a>
-      <a href="#repositories" class="btn btn-secondary btn-lg">Explore Repositories</a>
+      <a href="#documentation" class="btn btn-secondary btn-lg">Explore Documentation</a>
     </div>
   </div>
 
-  <div id="featured-project" class="featured-section">
-    <h2>Featured Project</h2>
-    <div class="feature-card featured">
-      <h3>Go Web Scraper</h3>
-      <p>Our flagship web scraper demonstrates Go's capabilities for concurrent programming, database integration, and web development.</p>
-      <p>Key features include concurrent data extraction, SQLite database integration, web interface, and ethical scraping practices.</p>
-      <div class="button-group">
-        <a href="https://github.com/GoEcosystem/go-web-scraper" class="btn btn-primary">View on GitHub</a>
-        <a href="https://goecosystem.github.io/go-web-scraper/" class="btn btn-secondary">View Documentation</a>
-      </div>
-    </div>
-  </div>
-
-  <div id="repositories" class="repositories-section">
-    <h2>Repositories</h2>
-    <div class="card-grid">
-      <div class="card">
-        <h3>go-template</h3>
-        <p>Standard template for Go projects with proper directory structure and GitHub workflows.</p>
-        <a href="https://github.com/GoEcosystem/go-template" class="btn btn-primary">View Repository</a>
-      </div>
-      
-      <div class="card">
-        <h3>go-library-template</h3>
-        <p>Template for creating reusable Go libraries with examples and best practices.</p>
-        <a href="https://github.com/GoEcosystem/go-library-template" class="btn btn-primary">View Repository</a>
-      </div>
-      
-      <div class="card">
-        <h3>go-utils</h3>
-        <p>Collection of shared utilities for HTTP, database, logging, and configuration.</p>
-        <a href="https://github.com/GoEcosystem/go-utils" class="btn btn-primary">View Repository</a>
-      </div>
-      
-      <div class="card">
-        <h3>go-docs</h3>
-        <p>Organization-wide documentation and guidelines for GoEcosystem projects.</p>
-        <a href="https://github.com/GoEcosystem/go-docs" class="btn btn-primary">View Documentation</a>
-      </div>
-      
-      <div class="card">
-        <h3>go-web-scraper</h3>
-        <p>Comprehensive web scraper with database integration and web interface.</p>
-        <a href="https://github.com/GoEcosystem/go-web-scraper" class="btn btn-primary">View Repository</a>
-        <a href="https://goecosystem.github.io/go-web-scraper/" class="btn btn-secondary">View Documentation</a>
-      </div>
-      
-      <div class="card">
-        <h3>go-cheatsheets</h3>
-        <p>Quick reference guides for Go programming language syntax and patterns.</p>
-        <a href="https://github.com/GoEcosystem/go-cheatsheets" class="btn btn-primary">View Cheatsheets</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="documentation-section">
-    <h2>Documentation Hub</h2>
-    <p class="documentation-intro">Access standardized documentation across all GoEcosystem repositories.</p>
-    
-    <div class="documentation-grid">
-      <div class="doc-card">
-        <h3>API References</h3>
-        <div class="doc-card-content">
-          <p>Comprehensive API documentation for all GoEcosystem projects.</p>
-          <div class="doc-links">
-            <a href="https://goecosystem.github.io/go-web-scraper/api/" class="doc-link">Go Web Scraper API</a>
-            <a href="https://goecosystem.github.io/go-utils/api/" class="doc-link">Go Utils API</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="doc-card">
-        <h3>Guides & Tutorials</h3>
-        <div class="doc-card-content">
-          <p>Step-by-step guides for using GoEcosystem tools and libraries.</p>
-          <div class="doc-links">
-            <a href="https://goecosystem.github.io/go-web-scraper/guides/" class="doc-link">Web Scraper Guides</a>
-            <a href="/guides/documentation-style-guide" class="doc-link">Documentation Style Guide</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="doc-card">
-        <h3>Templates</h3>
-        <div class="doc-card-content">
-          <p>Standardized templates for creating consistent documentation.</p>
-          <div class="doc-links">
-            <a href="/_templates/api-page-template" class="doc-link">API Documentation Template</a>
-            <a href="/_templates/reference-page-template" class="doc-link">Reference Documentation Template</a>
-            <a href="/_templates/guide-page-template" class="doc-link">Guide Documentation Template</a>
-            <a href="/_templates/readme-template" class="doc-link">README Template</a>
-          </div>
+  <section id="featured-project" class="featured-section">
+    <div class="container">
+      <h2>Featured Project</h2>
+      <div class="feature-card featured">
+        <h3>Go Web Scraper</h3>
+        <p>Our flagship web scraper demonstrates Go's capabilities for concurrent programming, database integration, and web development.</p>
+        <ul class="feature-list">
+          <li>Concurrent data extraction from multiple sources</li>
+          <li>SQLite database for persistent storage</li>
+          <li>Web interface for browsing scraped data</li>
+          <li>Export to JSON and CSV formats</li>
+          <li>Ethical scraping with rate limiting</li>
+        </ul>
+        <div class="button-group">
+          <a href="https://github.com/GoEcosystem/go-web-scraper" class="btn btn-primary">View on GitHub</a>
+          <a href="https://goecosystem.github.io/go-web-scraper/" class="btn btn-secondary">View Documentation</a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+  
+  <section id="repositories" class="repositories-section">
+    <div class="container">
+      <h2>Our Repositories</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>go-template</h3>
+          <p>Standard template for Go projects with proper directory structure and GitHub workflows.</p>
+          <a href="https://github.com/GoEcosystem/go-template" class="btn btn-primary">View Repository</a>
+        </div>
+        
+        <div class="card">
+          <h3>go-library-template</h3>
+          <p>Template for creating reusable Go libraries with examples and best practices.</p>
+          <a href="https://github.com/GoEcosystem/go-library-template" class="btn btn-primary">View Repository</a>
+        </div>
+        
+        <div class="card">
+          <h3>go-utils</h3>
+          <p>Collection of shared utilities for HTTP, database, logging, and configuration.</p>
+          <a href="https://github.com/GoEcosystem/go-utils" class="btn btn-primary">View Repository</a>
+        </div>
+        
+        <div class="card">
+          <h3>go-docs</h3>
+          <p>Organization-wide documentation and guidelines for GoEcosystem projects.</p>
+          <a href="https://github.com/GoEcosystem/go-docs" class="btn btn-primary">View Documentation</a>
+        </div>
+        
+        <div class="card">
+          <h3>go-web-scraper</h3>
+          <p>Comprehensive web scraper with database integration and web interface.</p>
+          <div class="button-group">
+            <a href="https://github.com/GoEcosystem/go-web-scraper" class="btn btn-primary">View Repository</a>
+            <a href="https://goecosystem.github.io/go-web-scraper/" class="btn btn-secondary">View Documentation</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3>go-cheatsheets</h3>
+          <p>Quick reference guides for Go programming language syntax and patterns.</p>
+          <a href="https://github.com/GoEcosystem/go-cheatsheets" class="btn btn-primary">View Cheatsheets</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="documentation" class="documentation-section">
+    <div class="container">
+      <h2>Documentation Hub</h2>
+      <p class="documentation-intro">Access standardized documentation across all GoEcosystem repositories.</p>
+      
+      <div class="documentation-grid">
+        <div class="doc-card">
+          <h3>API References</h3>
+          <div class="doc-card-content">
+            <p>Comprehensive API documentation for all GoEcosystem projects.</p>
+            <div class="doc-links">
+              <a href="https://goecosystem.github.io/go-web-scraper/api/" class="doc-link">Go Web Scraper API</a>
+              <a href="https://goecosystem.github.io/go-utils/api/" class="doc-link">Go Utils API</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doc-card">
+          <h3>Guides & Tutorials</h3>
+          <div class="doc-card-content">
+            <p>Step-by-step guides for using GoEcosystem tools and libraries.</p>
+            <div class="doc-links">
+              <a href="https://goecosystem.github.io/go-web-scraper/guides/" class="doc-link">Web Scraper Guides</a>
+              <a href="/guides/documentation-style-guide" class="doc-link">Documentation Style Guide</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doc-card">
+          <h3>Templates</h3>
+          <div class="doc-card-content">
+            <p>Standardized templates for creating consistent documentation.</p>
+            <div class="doc-links">
+              <a href="/_templates/api-page-template" class="doc-link">API Documentation Template</a>
+              <a href="/_templates/reference-page-template" class="doc-link">Reference Documentation Template</a>
+              <a href="/_templates/guide-page-template" class="doc-link">Guide Documentation Template</a>
+              <a href="/_templates/readme-template" class="doc-link">README Template</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <style>
