@@ -18,6 +18,31 @@ A comprehensive description of the repository purpose and features.
 
 Comprehensive documentation is available at [GoEcosystem.github.io/repository-name](https://goecosystem.github.io/repository-name/)
 
+### Local Documentation Preview
+
+To view documentation locally:
+
+```bash
+# Navigate to docs directory
+cd docs
+
+# Install Ruby dependencies
+bundle install
+
+# Start Jekyll server
+bundle exec jekyll serve
+```
+
+Then visit http://localhost:4000 in your browser.
+
+### Documentation Structure
+
+The documentation follows the standardized GoEcosystem structure:
+- API Reference: API endpoints and usage details
+- Architecture: Technical design and component interactions
+- Guides: Step-by-step tutorials for common tasks
+- Examples: Code examples demonstrating key features
+
 ## Installation
 
 ```bash
