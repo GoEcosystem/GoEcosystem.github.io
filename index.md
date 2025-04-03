@@ -6,6 +6,9 @@ description: A comprehensive ecosystem of Go applications, libraries, and tools
 
 <div class="hero-section" style="background-color: #00ADD8; padding: 4rem 0; border-radius: 0; text-align: center; margin-bottom: 3rem; color: white;">
   <div class="container">
+    <div class="hero-logo">
+      <img src="/assets/images/logos/Go-Logo_White.svg" alt="Go Logo" class="hero-image" style="width: 150px; margin-bottom: 20px;">
+    </div>
     <h1>GoEcosystem</h1>
     <p class="hero-tagline">A comprehensive ecosystem of Go applications, libraries, and tools</p>
     <div class="hero-buttons">

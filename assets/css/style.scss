@@ -1,23 +1,35 @@
 ---
 ---
 
-// Use the modern @use directive instead of @import
-// This addresses the deprecation warnings
-
 // Define color variables
-$header-bg-color: #00ADD8;
-$header-bg-color-secondary: #0092B8;
-$section-headings-color: #00ADD8;
-$body-link-color: #00ADD8;
+$primary-color: #00ADD8; // Go blue
+$primary-dark: darken($primary-color, 5%);
+$secondary-color: #F7F7F7;
+$text-color: #333333;
+$light-text: #FFFFFF;
+$border-color: #E9ECEF;
 
-// Import the theme styles by including them
-@import 'jekyll-theme-cayman';
+// Base styles
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+}
 
-// Additional custom styles
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Header styles
 .site-header {
-  background-color: #00ADD8;
-  color: white;
-  padding: 1rem 0;
+  background-color: $primary-color;
+  color: $light-text;
+  padding: 0.5rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -33,18 +45,30 @@ $body-link-color: #00ADD8;
 .site-logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: white;
+  color: $light-text;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .logo-text {
-  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .site-nav ul {
   display: flex;
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .site-nav li {
@@ -52,37 +76,47 @@ $body-link-color: #00ADD8;
 }
 
 .site-nav a {
-  color: white;
+  color: $light-text;
   text-decoration: none;
   font-weight: 500;
-  transition: opacity 0.2s;
+  padding: 0.5rem 0;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s;
+  display: block;
 }
 
-.site-nav a:hover, .site-nav a.active {
-  opacity: 0.8;
+.site-nav a:hover, 
+.site-nav a.active {
+  border-bottom-color: $light-text;
 }
 
-// Hero section styling
+// Hero section
 .hero-section {
+  background-color: $primary-color;
+  color: $light-text;
+  padding: 4rem 0;
   text-align: center;
-  padding: 3rem 1rem;
   margin-bottom: 3rem;
-  background-color: #00ADD8;
-  border-radius: 8px;
-  color: white;
+}
+
+.hero-logo {
+  margin-bottom: 1.5rem;
+}
+
+.hero-image {
+  max-width: 150px;
 }
 
 .hero-section h1 {
   font-size: 3rem;
-  color: white;
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 
-.hero-subtitle {
+.hero-tagline {
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 800px;
-  margin: 1rem auto 2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
 }
 
 .hero-buttons {
@@ -92,51 +126,138 @@ $body-link-color: #00ADD8;
   flex-wrap: wrap;
 }
 
-// Card styling
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+// Featured section
+.featured-section {
   margin-bottom: 3rem;
 }
 
-.card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+.featured-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
 }
 
-.card:hover {
+.featured-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: $primary-color;
+}
+
+.feature-card {
+  background-color: $secondary-color;
+  border-left: 5px solid $primary-color;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.feature-list li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.feature-list li::before {
+  content: '•';
+  color: $primary-color;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+// Repository section
+.repositories-section {
+  margin-bottom: 4rem;
+}
+
+.repositories-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.repositories-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: $primary-color;
+}
+
+.repository-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.repository-card {
+  background-color: #FFFFFF;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.repository-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card h3 {
+.repository-card h3 {
+  color: $primary-color;
   margin-top: 0;
-  color: #00ADD8;
 }
 
-.card p {
-  color: #495057;
+.repository-card p {
   margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
-// Documentation section styling
+// Documentation section
 .documentation-section {
+  background-color: $secondary-color;
+  padding: 3rem 0;
   margin-bottom: 3rem;
-  background-color: #f8f9fa;
-  padding: 2rem;
   border-radius: 8px;
+}
+
+.documentation-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.documentation-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: $primary-color;
 }
 
 .documentation-intro {
   text-align: center;
   margin-bottom: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .documentation-grid {
@@ -146,11 +267,14 @@ $body-link-color: #00ADD8;
 }
 
 .doc-card {
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .doc-card:hover {
@@ -159,14 +283,15 @@ $body-link-color: #00ADD8;
 }
 
 .doc-card h3 {
-  background-color: #00ADD8;
-  color: white;
+  background-color: $primary-color;
+  color: $light-text;
   padding: 1rem;
   margin: 0;
 }
 
 .doc-card-content {
   padding: 1.5rem;
+  flex-grow: 1;
 }
 
 .doc-links {
@@ -176,51 +301,47 @@ $body-link-color: #00ADD8;
 }
 
 .doc-link {
-  display: inline-block;
-  font-weight: 500;
+  color: $primary-color;
   text-decoration: none;
-  color: #00ADD8;
+  font-weight: 500;
 }
 
 .doc-link:hover {
   text-decoration: underline;
 }
 
-// Button styling
+// Buttons
 .btn {
   display: inline-block;
   padding: 0.5rem 1.5rem;
   font-weight: 500;
   text-align: center;
   border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
   text-decoration: none;
+  transition: all 0.2s;
 }
 
 .btn-primary {
-  background-color: #00ADD8;
-  color: white;
-  border: 1px solid #00ADD8;
+  background-color: $primary-color;
+  color: $light-text;
+  border: 1px solid $primary-color;
 }
 
 .btn-primary:hover {
-  background-color: #0092B8;
-  border-color: #0092B8;
-  text-decoration: none;
-  color: white;
+  background-color: $primary-dark;
+  border-color: $primary-dark;
+  color: $light-text;
 }
 
 .btn-secondary {
-  background-color: white;
-  color: #00ADD8;
-  border: 1px solid #00ADD8;
+  background-color: $light-text;
+  color: $primary-color;
+  border: 1px solid $primary-color;
 }
 
 .btn-secondary:hover {
-  background-color: #f8f9fa;
-  text-decoration: none;
-  color: #00ADD8;
+  background-color: $secondary-color;
+  color: $primary-color;
 }
 
 .btn-lg {
@@ -228,55 +349,86 @@ $body-link-color: #00ADD8;
   font-size: 1.1rem;
 }
 
-// Responsive styling
+// Footer
+.site-footer {
+  background-color: $secondary-color;
+  padding: 3rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid $border-color;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h3 {
+  color: $primary-color;
+  margin-top: 0;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+  color: $text-color;
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  color: $primary-color;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+// Responsive adjustments
 @media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-  }
-  
-  .footer-col {
-    padding-right: 0;
-  }
-  
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .hero-section h1 {
     font-size: 2.5rem;
   }
   
+  .footer-content {
+    flex-direction: column;
+  }
+  
+  .repository-grid,
   .documentation-grid {
     grid-template-columns: 1fr;
   }
-}
-
-// API documentation styling
-.api-documentation .endpoint-method {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-weight: bold;
-  margin-right: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.api-documentation .endpoint-method.get {
-  background-color: #D1ECF1;
-  color: #0C5460;
-}
-
-.api-documentation .endpoint-method.post {
-  background-color: #D4EDDA;
-  color: #155724;
-}
-
-.api-documentation .endpoint-method.put {
-  background-color: #FFF3CD;
-  color: #856404;
-}
-
-.api-documentation .endpoint-method.delete {
-  background-color: #F8D7DA;
-  color: #721C24;
+  
+  .site-header .container {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+  
+  .site-nav {
+    margin-top: 1rem;
+  }
+  
+  .site-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .site-nav li {
+    margin: 0 0.75rem;
+  }
 }
