@@ -1,14 +1,14 @@
 ---
 layout: default
 title: GoEcosystem
-description: A comprehensive ecosystem of Go applications, libraries, and tools
+description: A comprehensive ecosystem of Go applications, libraries, and tools with standardized documentation
 ---
 
 <div class="hero-section">
   <h1>Welcome to GoEcosystem</h1>
-  <p class="hero-subtitle">A comprehensive ecosystem of Go applications, libraries, and tools demonstrating modern software development practices.</p>
+  <p class="hero-subtitle">A comprehensive ecosystem of Go applications, libraries, and tools with standardized documentation across all repositories.</p>
   <div class="hero-buttons">
-    <a href="/documentation/" class="btn btn-primary btn-lg">Explore Documentation</a>
+    <a href="#documentation" class="btn btn-primary btn-lg">Explore Documentation</a>
     <a href="https://github.com/GoEcosystem" class="btn btn-secondary btn-lg">View on GitHub</a>
   </div>
 </div>
@@ -33,6 +33,53 @@ description: A comprehensive ecosystem of Go applications, libraries, and tools
     </div>
     <div class="featured-image">
       <img src="/assets/images/web-scraper-preview.png" alt="Go Web Scraper Interface" onerror="this.src='/assets/images/placeholder.png'; this.onerror=null;">
+    </div>
+  </div>
+</div>
+
+<h2 id="documentation">Documentation Hub</h2>
+
+<div class="documentation-section">
+  <p class="documentation-intro">
+    All GoEcosystem repositories follow a standardized documentation approach using Jekyll with consistent layouts, navigation, and styling.
+    Each repository includes comprehensive API references, architecture documentation, and user guides.
+  </p>
+  
+  <div class="documentation-grid">
+    <div class="doc-card">
+      <h3>Go Web Scraper</h3>
+      <div class="doc-card-content">
+        <p>Complete documentation for our web scraping solution with API references and architectural guides.</p>
+        <div class="doc-links">
+          <a href="https://goecosystem.github.io/go-web-scraper/" class="doc-link">Documentation Home</a>
+          <a href="https://goecosystem.github.io/go-web-scraper/api/" class="doc-link">API Reference</a>
+          <a href="https://goecosystem.github.io/go-web-scraper/architecture/" class="doc-link">Architecture</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <h3>Go Docs</h3>
+      <div class="doc-card-content">
+        <p>Organization-wide documentation, standards, and guidelines for GoEcosystem projects.</p>
+        <div class="doc-links">
+          <a href="https://goecosystem.github.io/go-docs/" class="doc-link">Documentation Home</a>
+          <a href="https://goecosystem.github.io/go-docs/standards/" class="doc-link">Code Standards</a>
+          <a href="https://goecosystem.github.io/go-docs/guidelines/" class="doc-link">Development Guidelines</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <h3>Go Cheatsheets</h3>
+      <div class="doc-card-content">
+        <p>Quick reference guides for Go programming language syntax and common patterns.</p>
+        <div class="doc-links">
+          <a href="https://goecosystem.github.io/go-cheatsheets/" class="doc-link">Cheatsheets Home</a>
+          <a href="https://goecosystem.github.io/go-cheatsheets/syntax/" class="doc-link">Syntax Reference</a>
+          <a href="https://goecosystem.github.io/go-cheatsheets/patterns/" class="doc-link">Design Patterns</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -133,6 +180,62 @@ description: A comprehensive ecosystem of Go applications, libraries, and tools
     gap: 1rem;
   }
 
+  .documentation-section {
+    margin-bottom: 3rem;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .documentation-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .documentation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .doc-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+  
+  .doc-card h3 {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+  }
+  
+  .doc-card-content {
+    padding: 1.5rem;
+  }
+  
+  .doc-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .doc-link {
+    display: inline-block;
+    font-weight: 500;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .doc-link:hover {
+    text-decoration: underline;
+  }
+
   @media (max-width: 768px) {
     .featured-project {
       flex-direction: column;
@@ -140,6 +243,10 @@ description: A comprehensive ecosystem of Go applications, libraries, and tools
 
     .featured-image {
       order: -1;
+    }
+    
+    .documentation-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
