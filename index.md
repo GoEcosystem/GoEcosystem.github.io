@@ -5,11 +5,13 @@ description: A comprehensive ecosystem of Go applications, libraries, and tools
 ---
 
 <div class="hero-section" style="background-color: #00ADD8; padding: 4rem 0; border-radius: 0; text-align: center; margin-bottom: 3rem; color: white;">
-  <h1>GoEcosystem</h1>
-  <p class="hero-tagline">A comprehensive ecosystem of Go applications, libraries, and tools</p>
-  <div class="hero-buttons">
-    <a href="https://github.com/GoEcosystem" class="btn btn-primary">View on GitHub</a>
-    <a href="#documentation" class="btn btn-secondary">Explore Documentation</a>
+  <div class="container">
+    <h1>GoEcosystem</h1>
+    <p class="hero-tagline">A comprehensive ecosystem of Go applications, libraries, and tools</p>
+    <div class="hero-buttons">
+      <a href="https://github.com/GoEcosystem" class="btn btn-primary">View on GitHub</a>
+      <a href="#documentation" class="btn btn-secondary">Explore Documentation</a>
+    </div>
   </div>
 </div>
 

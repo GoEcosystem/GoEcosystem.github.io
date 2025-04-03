@@ -16,6 +16,7 @@
     {% seo %}
 </head>
 <body>
+    {% unless page.url == "/" %}
     <header class="site-header">
         <div class="container">
             <a href="{{ '/' | relative_url }}" class="site-logo">
@@ -30,10 +31,11 @@
             </nav>
         </div>
     </header>
+    {% endunless %}
 
     <main class="site-content">
         <div class="container">
-            {% if page.title %}
+            {% if page.title and page.url != "/" %}
             <div class="page-header">
                 <h1>{{ page.title }}</h1>
                 {% if page.description %}
@@ -56,8 +58,8 @@
                 <div class="footer-col">
                     <h3>Resources</h3>
                     <ul>
-                        <li><a href="{{ '/documentation/' | relative_url }}">Documentation</a></li>
-                        <li><a href="{{ '/api-references/' | relative_url }}">API References</a></li>
+                        <li><a href="{{ '/#documentation' | relative_url }}">Documentation</a></li>
+                        <li><a href="{{ '/#repositories' | relative_url }}">Repositories</a></li>
                         <li><a href="{{ '/guides/' | relative_url }}">Guides</a></li>
                     </ul>
                 </div>
