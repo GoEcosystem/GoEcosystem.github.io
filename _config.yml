@@ -1,8 +1,8 @@
 # Site settings
-title: GoEcosystem Documentation
-description: Comprehensive documentation for the GoEcosystem organization
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://goecosystem.github.io" # the base hostname & protocol for your site
+title: GoEcosystem
+description: A comprehensive ecosystem of Go applications, libraries, and tools
+baseurl: ""
+url: "https://goecosystem.github.io"
 repository: GoEcosystem/GoEcosystem.github.io
 
 # Build settings
@@ -21,6 +21,14 @@ exclude:
   - LICENSE
   - README.md
 
+# GitHub Pages settings
+github:
+  is_project_page: true
+  repository_url: https://github.com/GoEcosystem/GoEcosystem.github.io
+  repository_name: GoEcosystem.github.io
+  owner_name: GoEcosystem
+  owner_url: https://github.com/GoEcosystem
+
 # Theme and plugins
 theme: jekyll-theme-cayman
 plugins:
@@ -28,11 +36,15 @@ plugins:
   - jekyll-relative-links
   - jekyll-github-metadata
 
+# Link rendering
+relative_links:
+  enabled: true
+  collections: true
+
 # Default layouts
 defaults:
   - scope:
       path: ""
-      type: "pages"
     values:
       layout: "default"
   - scope:
@@ -43,18 +55,18 @@ defaults:
       path: "guides"
     values:
       layout: "guide"
+  - scope:
+      path: "reference"
+    values:
+      layout: "reference"
 
 # Navigation
 navigation:
   - title: Home
     url: /
   - title: Repositories
-    url: /repositories/
+    url: /#repositories
   - title: Documentation
-    url: /documentation/
-  - title: API References
-    url: /api-references/
-  - title: Guides
-    url: /guides/
+    url: /#documentation
   - title: GitHub
     url: https://github.com/GoEcosystem
